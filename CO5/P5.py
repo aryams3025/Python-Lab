@@ -1,38 +1,24 @@
 import csv
-csv_columns = ['No','Name','Place']
-dict_data = [
+dict_columns = ['No','Name','Place']
+dict_rows = [
 {'No': 1, 'Name': 'AKHILA', 'Place': 'Kochi'},
 {'No': 2, 'Name': 'BINCY', 'Place': 'Trivandrum'},
 {'No': 3, 'Name': 'ARYA', 'Place': 'Kollam'},
 {'No': 4, 'Name': 'ANUSREE', 'Place': 'Kannur'},
 {'No': 5, 'Name': 'ARUN', 'Place': 'Kozhikode'},
 ]
-csv_file = "names.csv"
-
-with open(csv_file, 'w') as csvfile:
-    writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
+with open('dict.csv', 'w') as csvwrite:
+    writer = csv.DictWriter(csvwrite, fieldnames=dict_columns)
     writer.writeheader()
-    for data in dict_data:
-        writer.writerow(data)
+    writer.writerows(dict_rows)
 
+n=0    
+with open('dict.csv', 'r') as csvread:
+    reader= csv.DictReader(csvread)
+    for data in reader:
+        if n==0:
+            print(f'{"  ".join(data)}')
+            n=n+1
+        print(f'{data["No"]}{data["Name"]} {data["Place"]}' )
 
-with open('names.csv', 'r') as file:
-    reader = csv.reader(file)
-    for row in reader:
-        print(row[0]+" "+row[1]+" "+row[2])
-
-import csv
-csv_columns=['no','name','place']
-dict_data=[
-    {'no':1,'name':2,'place':'ran'}
-]        
-f=open("names.csv",'w')
-r=csv.DictWriter(f,fieldnames=csv_columns)
-r.writeheader()
-for data in dict_data:
-    r.writerow(data)
-f.close()
-f=open("names.csv",'r')
-r=csv.reader(f)
-for row in r:
-    print(row)    
+    
