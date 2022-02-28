@@ -1,23 +1,25 @@
-class rectangle:
-    def __init__(self,l,b):
-        self.l=l
-        self.b=b
+class Rectangle:
+    __width=0
+    __length=0
+    __area=0
+    def __init__(self,length,width):
+        self.__length=length
+        self.__width=width
     def area(self):
-        self.a=self.l*self.b
-    def __lt__(self, other):
-        if(self.a < other.a):
-            return "ob1 is lessthan ob2"
+        self.__area=self.__length*self.__width
+        print("Area is :",self.__area)
+    def __lt__(self,ob):
+        if(self.__area<ob.__area):
+            return "Area1 is lesserthan Area2"
         else:
-            return "ob2 is less than ob1"
-
-i=int(input("enter the length of rectangle 1:"))
-m=int(input("enter the breadth of rectangle 1:"))
-x=int(input("enter the length of rectangle 2:"))
-y=int(input("enter the breadth of rectangle 2:"))
-
-
-r1=rectangle(i,m)
-r1.area()
-r2=rectangle(x,y)
-r2.area()        
-print(r1<r2)
+            return "Area2 is lesserthan Area1"
+length=int(input("enter the length"))
+width=int(input("enter the width"))
+ob1=Rectangle(length,width)
+ob1.area()
+length=int(input("enter the length"))
+width=int(input("enter the width"))
+ob2=Rectangle(length,width)
+ob2.area()
+print(ob1<ob2)
+              
