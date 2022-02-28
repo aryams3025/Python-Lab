@@ -1,30 +1,25 @@
 class Publisher:
-    "Information about books"
-    def __init__(self,pubname):
-        self.pubname=pubname
+    def __init__(self,name):
+        self.name=name
     def display(self):
-         print("Publisher Name:", self.pubname)
-
+        print("Publisher name=",self.name)
 class Book(Publisher):
-     def __init__(self,pubname,title,author):
-         Publisher.__init__(self,pubname)
-         self.title=title
-         self.author=author
-
-     def display(self):
-          print("Title: ",self.title)
-          print("Author: ",self.author)
-          
+    def __init__(self,name,title,author):
+        Publisher.__init__(self,name)
+        self.title=title
+        self.author=author
+    def displaybook(self):
+        self.display()
+        print("title=",self.title)
+        print("author=",self.author)
 class Python(Book):
-     def __init__(self,pubname,title,author,price,no_of_pages):
-        Book.__init__(self,pubname,title,author)
+    def __init__(self,name,title,author,price,pages):
+        Book.__init__(self,name,title,author)
         self.price=price
-        self.no_of_pages=no_of_pages
-     def display(self):
-        print("Title: ",self.title)
-        print("Author: ",self.author)
-        print("Price: ",self.price)
-        print("Number of pages: ", self.no_of_pages)
-           
-s1=Python("ak books","Taming Python By Programming  ",' Jeeva Jose ' ,200,219)
-s1.display()
+        self.pages=pages
+    def displaydetails(self):
+        self.displaybook()
+        print("price=",self.price)
+        print("number of pages=",self.pages)
+s1=Python("DC books","Python programming","Dr.Jeeva Jose",350,220)
+s1.displaydetails()
